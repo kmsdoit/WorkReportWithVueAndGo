@@ -16,6 +16,6 @@ func main() {
 
 	var db = utility.GetConnection()
 	user.SetDB(db)
-	log.Println("Listening on Port 8081")
+	log.Println("Listening on Port 8082")
 	routes.Router()
 }
