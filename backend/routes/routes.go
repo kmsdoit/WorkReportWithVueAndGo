@@ -7,7 +7,7 @@ import (
 var router = gin.Default()
 
 func Router() {
-	router.GET("/")
+	UserRouter()
 	err := router.Run(":8081")
 	if err != nil {
 		return
