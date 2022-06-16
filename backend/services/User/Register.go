@@ -9,6 +9,15 @@ func UserRegister(c *gin.Context) {
 
 	if err := c.BindJSON(&user); err == nil {
 		log.Print(err)
+		result := dbConn.Find(&user, "email=?", user.Email)
+
+		// 이미 이메일이 존재할 경우의 처리
+		if result.RowsAffected != 0 {
+			c.JSON(400, gin.H{
+				"status":  400,
+				"message": "existing email",
+			})
+		}
 		userEmailValidation := isEmailValid(user.Email)
 		if userEmailValidation == true {
 			user.Password = GenerateHashPassword(user.Password)
