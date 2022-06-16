@@ -8,15 +8,3 @@ type User struct {
 	Password string `gorm:"type:text" json:"password"`
 	Name     string `gorm:"type:text" json:"name"`
 }
-
-func GetUser() User {
-	var user User
-
-	return user
-}
-
-func GetUsers() []User {
-	var users []User
-
-	return users
-}

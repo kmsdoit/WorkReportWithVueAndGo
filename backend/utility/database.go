@@ -7,9 +7,10 @@ import (
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	user "github.com/kmsdoit/WorkReportWithVueAndGo/backend/services/User"
 )
 
-func GetConnection() *gorm.DB {
+func GetConnectionSetting() *gorm.DB {
 
 	host := os.Getenv("HOST")
 	port := os.Getenv("PORT")
@@ -30,4 +31,9 @@ func GetConnection() *gorm.DB {
 
 	log.Println("DB Connection established...")
 	return db
+}
+
+func DBConnection() {
+	var db = GetConnectionSetting()
+	user.SetDB(db)
 }
