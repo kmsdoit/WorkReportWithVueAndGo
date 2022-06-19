@@ -133,7 +133,7 @@ export default {
 			this.checkPwCheckValidation();
 
 
-			// 
+			// url 적고 post로 데이터 보내기
 			axios.post('')
 				.then(result => { 
 					console.log(result);
