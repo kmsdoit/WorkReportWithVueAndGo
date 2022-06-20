@@ -8,12 +8,13 @@
 
       <div class="menu-container">
         <ul class="menu">
-          <li>
-            <router-link to="/login" class="login link">로그인</router-link>
+          <!-- 나중에 메뉴 추가 -->
+          <!-- <li>
+            <router-link to="/" class="login link">로그인</router-link>
           </li>
           <li>
             <router-link to="/signup" class="sign-up link">회원가입</router-link>
-          </li>
+          </li> -->
           <!-- <li>
             <routerLink href="/mypage"></routerLink>
           </li> -->

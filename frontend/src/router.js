@@ -4,6 +4,8 @@ import { createWebHistory, createRouter } from "vue-router";   // HTML5 모드
 // import App from './App.vue';
 import Login from './components/Login.vue';
 import ErrorPage from './components/ErrorPage.vue';
+import Register from './components/Register.vue';
+
 
 
 const routes = [
@@ -12,9 +14,14 @@ const routes = [
   //   component: App,
   // },
   {
-    path: "/login",
+    path: "/",    // 첫 화면을 로그인 화면으로 설정
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/register",  // 회원가입 페이지로 이동
+    name: "Register",
+    component: Register,
   },
   // 같은 라우터에 걸리면 위에 있는걸 적용시킨다. 따라서, 404 페이지같은 경우 맨 아래에 기재하자.
   {

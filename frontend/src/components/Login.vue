@@ -2,7 +2,7 @@
   <div class='login-container'>
     <div class="login-box">
       <h2>로그인</h2>
-        <form>
+        <form @submit.prevent="doLogin">
           <div class="user-box">
             <input id="userID" type="text" name="" required="" v-model="userId"/>
             <label>이메일</label>
@@ -11,12 +11,12 @@
             <input id="userPW" type="password" name="" required="" v-model="userPw"/>
             <label>비밀번호</label>
           </div>
-          <button class='login-btn' @click="doLogin()">로그인</button>
+          <button type="submit" class='login-btn'>로그인</button>
         </form>
       <div class="register">
         <button class='findId-btn'>아이디 찾기</button>
         <button class='findPw-btn'>비밀번호 찾기</button>
-        <button class='signUp-btn'>회원가입</button>
+        <button class='signUp-btn' @click="goRegister()">회원 가입</button>
       </div>
     </div>
   </div>
@@ -24,9 +24,11 @@
 
 <script>
 
+import axios from 'axios';
+
 export default {
   name: 'Login',
-  data: function() {
+  data: () => {
     return {
       userId: '',
       userPw: '',
@@ -34,17 +36,29 @@ export default {
     }
   },
   methods: {
-    doLogin(e) {
-      e.preventDefault();
+    doLogin() {
+      // e.preventDefault();
 
       let saveData = {};
       saveData.userId = this.userId;
       saveData.userPw = this.userPw;
 
-      fetch()
+    // fetch는 비교적 최신 브라우저에서만 동작하므로, 브라우저의 호환성을 위해 axios 라이브러리를 주로 쓴다고 함. 
+      axios.post('url~~~')
+        .then( result => {
+          console.log(result);
+
+
+
+        }).catch((err) => {
+          console.log(err)
+      })
+
       
     },
-    // html require속성을 통해 자동으로 검사해줌
+    goRegister() {
+      this.$router.push('/register');
+    }
 
   },
 
@@ -56,7 +70,7 @@ export default {
 <style>
 .login-container {
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0;
@@ -67,12 +81,15 @@ export default {
   /* background: linear-gradient(#141e30, #243b55); */
   color: white;
   font-size: 16px;
+  font-weight: 400; 
+  line-height: 1.4; 
 }
 
 .login-box {
   display: block;
-  margin: 150px auto 150px;
+  margin: 150px auto;
   width: 400px;
+  /* height: 350px; */
   padding: 40px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
@@ -152,44 +169,45 @@ export default {
   margin-top: 30px;
   border: 1px solid #fff;
   background: transparent;
+  cursor: pointer;
+}
+.login-btn:hover {
+  color: #333;
+  border-radius: 5px;
+  background-color: #c8c8c8;
 }
 
 .register {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  /* width: 400px; */
   text-align: center;
 }
 
 .findId-btn,
 .findPw-btn,
 .signUp-btn {
-  margin: 30px 10px 0;
+  margin-top: 50px;
+  padding: 0 13px 0;
   border: none;
   background: transparent;
   color: white;
   font-size: 15px;
   transition: 0.5s;
   cursor: pointer;
+  position: relative;
 }
-.findId-btn,
-.findPw-btn {
-  border-right: 0.5px solid rgb(148, 141, 141);
-}
-.findPw-btn {
-  margin-left: -10px;
-}
-.signUp-btn {
-  margin-left: -10px;
-}
-
-.login-btn:hover {
-  color: #333;
-  border-radius: 5px;
-  background-color: #c8c8c8;
-  /* box-shadow: 0 0 5px #03e9f4, 0 0 20px #03e9f4, 0 0 30px #03e9f4,
-    0 0 50px #03e9f4; */
+.findId-btn::after, .findPw-btn::after {
+  content: "";
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute; 
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
 }
 
 .findId-btn:hover,
