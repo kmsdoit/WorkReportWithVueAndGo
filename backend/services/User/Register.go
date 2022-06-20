@@ -17,6 +17,7 @@ func UserRegister(c *gin.Context) {
 				"status":  400,
 				"message": "existing email",
 			})
+			return
 		}
 		userEmailValidation := isEmailValid(user.Email)
 		if userEmailValidation == true {
@@ -29,6 +30,7 @@ func UserRegister(c *gin.Context) {
 					"status":  "success",
 					"message": "register is success",
 				})
+				return
 			} else {
 				c.JSON(500, gin.H{
 					"status":  "fail",
