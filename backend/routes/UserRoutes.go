@@ -6,6 +6,11 @@ func UserRouter() {
 	userApi := router.Group("/api/user")
 	{
 		userApi.POST("/register", User.UserRegister)
+		userApi.POST("/login", User.UserLogin)
+		userApi.GET("/accessTokenVerify", User.VerifyAccessToken)
+		userApi.GET("/refreshTokenVerify", User.VerifyRefreshToken)
+		userApi.GET("/reissuanceAccessToken", User.CreateReissuanceToken)
+		userApi.GET("/findPassword", User.FindPassword)
+		userApi.POST("/updatePassword", User.UpdatePassword)
 	}
-
 }
