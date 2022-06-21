@@ -1,7 +1,7 @@
 // Router
 
 import { createWebHistory, createRouter } from "vue-router";   // HTML5 모드
-// import App from './App.vue';
+import StartView from './components/StartView.vue';
 import Login from './components/Login.vue';
 import ErrorPage from './components/ErrorPage.vue';
 import Register from './components/Register.vue';
@@ -9,10 +9,11 @@ import Register from './components/Register.vue';
 
 
 const routes = [
-  // {
-  //   path: "/",
-  //   component: App,
-  // },
+  {
+    path: "/",
+    name: "StartView",
+    component: StartView,
+  },
   {
     path: "/login",    // 첫 화면을 로그인 화면으로 설정
     name: "Login",
