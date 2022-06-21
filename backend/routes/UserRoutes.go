@@ -10,7 +10,7 @@ func UserRouter() {
 		userApi.GET("/accessTokenVerify", User.VerifyAccessToken)
 		userApi.GET("/refreshTokenVerify", User.VerifyRefreshToken)
 		userApi.GET("/reissuanceAccessToken", User.CreateReissuanceToken)
-		userApi.GET("/findPassword", User.FindPassword)
-		userApi.POST("/updatePassword", User.UpdatePassword)
+		userApi.GET("/findPassword", User.FindPassword)      //미완성
+		userApi.POST("/updatePassword", User.UpdatePassword) //미완성
 	}
 }
