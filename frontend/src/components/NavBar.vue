@@ -1,23 +1,22 @@
 <template>
   <nav>
     <div class="inner">
-      <!-- 로고 -->
-      <router-link to="/" class="logo link">
-        <img src="../assets/workLogo.png" alt="출퇴근">
-      </router-link>
 
+      <!-- 로고 -->
+      <a href="/" class="logo link">
+        <img src="../assets/IDB_logo.png" alt="IDB_LOGO">
+      </a>
+
+      <!-- 메뉴 부분 -->
       <div class="menu-container">
         <ul class="menu">
           <!-- 나중에 메뉴 추가 -->
-          <!-- <li>
-            <router-link to="/" class="login link">로그인</router-link>
+          <li>
+            <button class="login" id="loginBtn" @click="goLogin()">로그인</button>
           </li>
           <li>
-            <router-link to="/signup" class="sign-up link">회원가입</router-link>
-          </li> -->
-          <!-- <li>
-            <routerLink href="/mypage"></routerLink>
-          </li> -->
+            <button class="register" id="registerBtn" @click="goRegister()">회원가입</button>
+          </li>
         </ul>
       </div>
 
@@ -28,12 +27,36 @@
 <script>
 export default {
   name: 'NavBar',
+  data: () => {
+    return {
 
+    }
+  },
+  methods: {
+    goLogin() {
+      this.$router.push('/login');
+    },
+    goRegister() {
+      this.$router.push('/register');
+    }
+  }
 }
 </script>
 
 <style>
 /* common */
+nav {
+  color: #333; 
+  font-size: 16px;  
+  font-weight: 400; 
+  line-height: 1.4; 
+  font-family: 'Nanum Gothic', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-bottom: 1px solid #c8c8c8;
+}
 img {
   display: block; 
 }
@@ -44,42 +67,40 @@ li {
   text-decoration: none;
 }
 .inner {    
-  width: 1300px;
+  width: 80%;
+  height: 60px;
   margin: 0 auto;
   position: relative;
 }
-
-/* nav */
-nav { 
-  /* background-color: #f6f5f0; */
-  background-color: rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid #c8c8c8; 
-}
-nav > .inner {   
-  height: 90px;
-}
+/* logo */
 .logo {
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto;
-  height: 75px; /* logo의 높이값과 같도록 해야한다. */
+  height: 50px; /* logo의 높이값과 같도록 해야한다. */
   left: 0;  /* logo가 inner에 잘 붙어있다고 명시 */
-}  
-nav .menu-container {
+} 
+/* menu */
+.menu-container {
   display: flex;
   position: absolute;
-  top: 3px;
+  top: 5px;
   right: 0;
+  background: #eee;
 }
-nav .menu-container ul.menu {
+.menu-container ul {
   display: flex;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
-nav .menu-container ul.menu li {
+
+
+
+/* nav .menu-container ul.menu li {
   position: relative;
-}
-nav .menu-container ul.menu li::before {
+} */
+/* nav .menu-container ul.menu li::before {
   content: "";
   width: 1px;
   height: 12px;
@@ -88,20 +109,22 @@ nav .menu-container ul.menu li::before {
   top: 0;
   bottom: 0;
   margin: auto;
-}
-nav .menu-container ul.menu li:first-child::before {
+} */
+
+/* .menu-container ul.menu li:first-child::before { */
   /* 첫번째 li태그의 가상요소(즉, sing in앞의 구분선)를 안보이도록 */
-  display: none; 
-}
-nav .menu-container ul.menu li .link {
+  /* display: none; 
+} */
+
+/* .link {
   font-size: 20px;
   padding: 11px 16px;
   display: block;
-  /* color: #656565; */
-  color: #fff;
-}
-nav .menu-container ul.menu li .link:hover {
-  color: #000;
-}
+  color: #333;
+} */
+
+/* .link:hover {
+  color: rgb(69, 226, 231);
+} */
 
 </style>
