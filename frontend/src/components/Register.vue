@@ -30,9 +30,8 @@
 					<input type="text" id="position" v-model="position" />
 				</div> -->
 				<button type="submit" class="register-btn">가입하기</button>
-		</form>
-	</div>
-		
+			</form>
+		</div>
 	</div>
 </template>
 
@@ -134,10 +133,13 @@ export default {
 
 
 			// url 적고 post로 데이터 보내기
-			axios.post('')
+			axios.post('http://localhost:8081/api/user/register')
 				.then(result => { 
 					console.log(result);
 
+					// if(status == 200) {
+					// 		성공시 안의코드 실행
+					// }
 
 
 				})

@@ -14,7 +14,7 @@ const routes = [
   //   component: App,
   // },
   {
-    path: "/",    // 첫 화면을 로그인 화면으로 설정
+    path: "/login",    // 첫 화면을 로그인 화면으로 설정
     name: "Login",
     component: Login,
   },
