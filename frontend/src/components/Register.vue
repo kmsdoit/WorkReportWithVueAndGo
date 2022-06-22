@@ -1,55 +1,64 @@
 <template>
-<Header></Header>
+<!-- <Header></Header> -->
   <div class="register-container">
-		<div class="w-30">
+		<!-- <div class="w-30">
 			<div>idb관련 이미지나 로고 넣기</div>
-		</div>
-		<div class="w-70">
+		</div> -->
+		<!-- <div class="w-70"> -->
+    <div class="logo-box">
+      <img src="../assets/IDB_logo.png" alt="IDB_LOGO">
+    </div>
 			<form @submit.prevent="submitForm" class="register-form">
 				<h2> 회원가입 </h2>
 				<!-- ID -->
 				<div class="id-box register-div">
 					<label for="id">아이디</label>
-					<input type="text" id="joinCompany" autofocus v-model="joinCompany" />
+					<input type="text" id="id" autofocus v-model="id" @blur="IdValidation()"/>
 					<!-- <p class="idNone" id="idMsg">{{idMsg}}</p> -->
 				</div>
 				<!-- PW -->
 				<div class="pw-box register-div">
 					<label for="pw">비밀번호</label>
-					<input type="password" id="pw" v-model="pw" @blur="checkPwValidation"/>
+					<input type="password" id="pw" v-model="pw" @blur="PwValidation()"/>
 					<p class="pwNone" id="pwMsg">{{pwMsg}}</p>
 				</div>
 				<!-- PW확인 -->
 				<div class="pw-check-box register-div">
 					<label for="pwCheck">비밀번호 확인</label>
-					<input type="password" id="pwCheck" v-model="pwCheck" @blur="checkPwCheckValidation"/>
+					<input type="password" id="pwCheck" v-model="pwCheck" @blur="PwCheckValidation()"/>
 					<p class="pwCheckNone" id="pwCheckMsg">{{pwCheckMsg}}</p>
 				</div>
+        <!-- ! 이메일이랑 네임 묶고 -->
+        <!-- Name -->
+        <div class="name-box register-div">
+          <label for="name">이름</label>
+          <input type="text" id="name" v-model="name" />
+          <p class="nameNone" id="nameMsg">{{nameMsg}}</p>
+        </div>
 				<!-- Email -->
 				<div class="email-box register-div">
 					<label for="email">이메일</label>
-					<input type="text" id="email" v-model="email" @blur="checkIdValidation"/>
-					<p class="idNone" id="emailMsg">{{idMsg}}</p>
+					<input type="email" id="email" v-model="email" />
+					<p class="emailNone" id="emailMsg">{{emailMsg}}</p>
 				</div>
-				<!-- Name -->
-				<div class="name-box register-div">
-					<label for="name">이름</label>
-					<input type="text" id="name" v-model="name"  />
-				</div>
+        <!-- ! 입사일이랑 직책 묶자 -->
 				<!-- 입사일 -->
 				<div class="join-box register-div">
-					<label for="joinCompany">입사날짜</label>
+					<label for="joinCompany">입사일</label>
 					<input type="text" id="joinCompany" v-model="joinCompany"  />
-					<!-- <p class="idNone" id="idMsg">{{idMsg}}</p> -->
+					<p class="joinCompanyNone" id="joinCompanyMsg">{{joinCompanyMsg}}</p>
 				</div>
-				<div>
+        <!-- 직책 -->
+				<div class="position-box register-div">
 					<label for="position">직책</label>
 					<input type="text" id="position" v-model="position" />
+          <p class="positionNone" id="positionMsg">{{positionMsg}}</p>
 				</div>
+        <!-- 가입버튼 -->
 				<button type="submit" class="register-btn">가입하기</button>
 			</form>
 		</div>
-	</div>
+	<!-- </div> -->
 </template>
 
 <script>
@@ -59,22 +68,27 @@ import Header from './Header.vue';
 export default {
     name: "SignupForm",
     data() {
-        return {
-            id: "",
-            pw: "",
-            pwCheck: "",
-            email: "",
-            name: "",
-            joinCompany: "",
-            position: "",
-            idMsg: "",
-            pwMsg: "",
-            pwCheckMsg: "",
-        };
+      return {
+        id: "",
+        pw: "",
+        pwCheck: "",
+        email: "",
+        name: "",
+        joinCompany: "",
+        position: "",
+          
+        idMsg: "",
+        pwMsg: "",
+        pwCheckMsg: "",
+        emailMsg: "",
+        nameMsg: "",
+        joinCompanyMsg: "",
+        positionMsg: "",
+      };
     },
     methods: {
-        // id 유효성 검사
-        checkIdValidation() {
+        //^ id 유효성 검사 (id 형식으로 변경해야함)
+        IdValidation() {
             /* eslint-disable */
             // 아이디는 공백이면 안되고, 이메일 형식으로 작성되어야 한다.
             const reg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -94,8 +108,8 @@ export default {
                 this.idMsg = "";
             }
         },
-        // 비밀번호 유효성 검사
-        checkPwValidation() {
+        //^ 비밀번호 유효성 검사
+        PwValidation() {
             // 특수문자 / 문자 / 숫자 포함 형태의 8~15자리 이내의 암호 정규식
             const reg = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
             const isValidPw = reg.test(this.pw);
@@ -114,8 +128,8 @@ export default {
                 this.pwMsg = "";
             }
         },
-        // 비밀번호 확인 유효성 검사
-        checkPwCheckValidation() {
+        //^ 비밀번호 확인 유효성 검사
+        PwCheckValidation() {
             // this.pw와 일치하는지만 확인
             const isValidPwCheck = this.pw === this.pwCheck;
             console.log(isValidPwCheck);
@@ -133,12 +147,12 @@ export default {
                 this.pwCheckMsg = "";
             }
         },
-        // 가입하기 클릭시 실행할 함수(form 전송시)
+        //^ 가입하기 클릭시 실행할 함수(form 전송시)
         submitForm() {
             // 폼 전송시 id, pw, pwCheck 모두 검사
-            this.checkIdValidation();
-            this.checkPwValidation();
-            this.checkPwCheckValidation();
+            this.IdValidation();
+            this.PwValidation();
+            this.PwCheckValidation();
             // url 적고 post로 데이터 보내기
             axios.post("http://localhost:8081/api/user/register")
                 .then(result => {
@@ -157,26 +171,28 @@ export default {
 </script>
 
 <style>
-* {
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-	font-size: 16px;
-	font-weight: 400; 
-  line-height: 1.4; 
-	margin: 0;
-  padding: 0;
-}
 .register-container {
   width: 100vw;
   height: 100vh;
-  
-	position: relative;
-
-  /* background: linear-gradient(#141e30, #243b55); */
-  /* color: white; */
-  
+  overflow: hidden;
+  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), url("../assets/architecture.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; 
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
 }
-.w-30 {
+
+/* 화면 왼쪽 30% */
+/* .w-30 {
 	width: 30vw;
 	height: 100vh;
 	display: flex;
@@ -184,29 +200,46 @@ export default {
 	position: absolute;
 	top: 0;
 	left: 0;
-}
-.w-70 {
+} */
+/* 화면 오른쪽 70% */
+/* .w-70 {
 	width: 70vw;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
-	/* background-color: orange; */
-	
+} */
+
+/* logo-box */
+.logo-box {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto 0;
 }
+.logo-box img {
+  width: 200px;
+  height: 50px;
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+}
+
+/* form */
 .register-form {
 	display: block;
-  margin: 150px auto;
-  width: 600px;
+  margin: 0px auto;
+  width: 500px;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.5); 
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
 }
 .register-form h2 {
-	margin-bottom: 60px;
+	margin: 0 0 40px;
 	font-size: 30px;
 	font-weight: 600;
-	color: #fff;
 }
 .register-div {
 	/* width: 100%; */
