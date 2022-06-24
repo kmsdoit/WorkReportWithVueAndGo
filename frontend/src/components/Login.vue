@@ -1,7 +1,9 @@
 <template>
   <div class='login-container'>
-    <Header></Header>
-
+    <!-- <Header></Header> -->
+    <div class="logo-box">
+      <img src="../assets/IDB_logo.png" alt="IDB_LOGO">
+    </div>
     <div class="login-box">
       <h2>로그인</h2>
       <form @submit.prevent="doLogin">
@@ -27,7 +29,7 @@
 <script>
 
 import axios from 'axios';
-import Header from './Header.vue';
+// import Header from './Header.vue';
 
 export default {
     name: "Login",
@@ -55,7 +57,7 @@ export default {
             this.$router.push("/register");
         }
     },
-    components: { Header }
+    // components: { Header }
 }
 </script>
 
@@ -79,12 +81,27 @@ export default {
   text-align: center;
   position: relative;
 }
+/* logo-box */
+.logo-box {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto 0;
+}
+.logo-box img {
+  width: 200px;
+  height: 50px;
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+}
 
 /* 로그인 박스 */
 .login-box {
   display: block;
   width: 400px;
-  margin: 150px auto;
+  margin: 10px auto;
   padding: 40px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
