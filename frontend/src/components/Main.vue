@@ -1,15 +1,12 @@
 <template>
-  <!-- NavBar는 로그인 성공한 후 메인페이지에서 보여주자. -->
-  <NavBar/>
-
-
-  <!-- <router-view></router-view> -->
-  
+  <div>
+    dd
+  </div>
 
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
+// import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'Main',
@@ -18,9 +15,9 @@ export default {
 
     }
   },
-  components: {
-    NavBar,
-}
+  // components: {
+  //   NavBar,
+// }
 }
 </script>
 
