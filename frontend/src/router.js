@@ -5,6 +5,7 @@ import StartView from './components/StartView.vue';
 import Login from './components/Login.vue';
 import ErrorPage from './components/ErrorPage.vue';
 import Register from './components/Register.vue';
+import Main from './components/Main.vue';
 
 
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/register",  // 회원가입 페이지로 이동
     name: "Register",
     component: Register,
+  },
+  {
+    path: "/main",
+    name: "Main",
+    component: Main,
   },
   // 같은 라우터에 걸리면 위에 있는걸 적용시킨다. 따라서, 404 페이지같은 경우 맨 아래에 기재하자.
   {

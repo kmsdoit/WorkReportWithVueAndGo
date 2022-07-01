@@ -48,10 +48,6 @@ export default {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0,0,0,0.3) ), url("../assets/architecture.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; 
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
@@ -104,7 +100,7 @@ export default {
   padding: 10px;
   margin: 15px;
   color: #fff;
-  background-color: #26bfeb;
+  background-color: #0298db;
   font-size: 20px;
   letter-spacing: 2px;
   cursor: pointer;
@@ -112,7 +108,7 @@ export default {
 }
 .btn-box button:hover {
   background-color: #0276aa;
-  /* color: #26bfeb; */
+  /* color: #0298db; */
 }
 
 /* footer */
