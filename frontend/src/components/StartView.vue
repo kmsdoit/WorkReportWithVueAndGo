@@ -1,11 +1,13 @@
 <template>
 <!-- background -->
   <div class="background">
-    <Header></Header>
+    <div class="video">
+      <video class="main_video" src="../assets/bg_video.mp4" autoplay loop muted></video>
+    </div>
+    <!-- <Header></Header> -->
     <!-- 컨텐츠 -->
-    <div class="explain-box">
-      <h1>IDB 출퇴근 관리</h1>
-      <p>IDB 출퇴근 관리 페이지입니다.</p>
+    <div class="logo-box">
+      <img src="../assets/IDB_logo.png" alt="IDB">
     </div>
     <!-- 버튼 -->
     <div class="btn-box">
@@ -23,7 +25,8 @@
 </template>
 
 <script>
-import Header from './Header.vue';
+// import Header from './Header.vue';
+
 export default {
   name: "StartView",
   data() {
@@ -37,9 +40,9 @@ export default {
           this.$router.push("/register");
       },
   },
-  components: {
-    Header
-  }
+  // components: {
+  //   Header
+  // }
 };
 </script>
 
@@ -58,28 +61,28 @@ export default {
   text-align: center;
   position: relative;
 }
+/* video */
+.video {
+  width: 100vw;
+  height: 100vh;
+}
 
-/* explain-box */
-.explain-box {
+/* logo-box */
+.logo-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60%;
+  height: 10%;
   position: absolute;
-  top: 80px;
-  color: #fff;
+  top: 10px;
 }
-.explain-box h1 {
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 2;
-  /* font-family: 나중에 글꼴 추가; */
+.logo-box img {
+  width: 200px;
+  height: 60px;
 }
-.explain-box p {
-  font-size: 17px;
-} 
+
 
 /* btn-box */
 .btn-box {
@@ -87,7 +90,7 @@ export default {
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 40vh;
+  bottom: 15vh;
   left: 0;
   right: 0;
   margin-top: 50px;
@@ -99,8 +102,9 @@ export default {
   border-radius: 10px;
   padding: 10px;
   margin: 15px;
-  color: #fff;
-  background-color: #0298db;
+  color: #7cb0cc;
+  background-color: #ecfdff;
+  border: none;
   font-size: 20px;
   letter-spacing: 2px;
   cursor: pointer;
@@ -108,6 +112,7 @@ export default {
 }
 .btn-box button:hover {
   background-color: #0276aa;
+  color: #fff;
   /* color: #0298db; */
 }
 
