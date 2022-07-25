@@ -1,23 +1,20 @@
 <template>
   <div>
-    dd
+    <SideBar></SideBar>
   </div>
 
 </template>
 
 <script>
 // import NavBar from './components/NavBar.vue'
+import SideBar from './SideBar.vue';
 
 export default {
-  name: 'Main',
-  data() {
-    return {
-
-    }
-  },
-  // components: {
-  //   NavBar,
-// }
+    name: "Main",
+    data() {
+        return {};
+    },
+    components: { SideBar }
 }
 </script>
 

@@ -127,7 +127,7 @@ export default {
   max-width: 600px;
   display: block;
   margin: 0 auto;
-  height: 400px;
+  height: 430px;
   background: #fff;
   color: #333;
   border: none;
