@@ -1,19 +1,21 @@
 // Router
 
 import { createWebHistory, createRouter } from "vue-router";   // HTML5 모드
-import StartView from './components/StartView.vue';
-import Login from './components/Login.vue';
-import ErrorPage from './components/ErrorPage.vue';
-import Register from './components/Register.vue';
-import Main from './components/Main.vue';
-
+// import StartView from './pages/StartView.vue';
+import Login from './pages/Login.vue';
+import ErrorPage from './pages/ErrorPage.vue';
+import Register from './pages/Register.vue';
+import Main from './pages/Main.vue';
+// import Home from './pages/Home.vue';
+// import Work from './pages/Work.vue';
+// import Vacation from './pages/Vacation.vue';
 
 
 const routes = [
   {
     path: "/",
-    name: "StartView",
-    component: StartView,
+    name: "Main",
+    component: Main,
   },
   {
     path: "/login",    // 첫 화면을 로그인 화면으로 설정
@@ -25,11 +27,15 @@ const routes = [
     name: "Register",
     component: Register,
   },
-  {
-    path: "/main",
-    name: "Main",
-    component: Main,
-  },
+  // {
+    // path: "/main",
+    // name: "Main",
+    // component: Main,
+    // children: [
+    //   { path: "work", component: Work },
+    //   { path: "vacation", component: Vacation },
+    // ]
+  // },
   // 같은 라우터에 걸리면 위에 있는걸 적용시킨다. 따라서, 404 페이지같은 경우 맨 아래에 기재하자.
   {
     path: "/:anyting",
