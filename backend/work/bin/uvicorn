@@ -1,4 +1,4 @@
-#!/Users/kimmyeongsu/Desktop/WorkReportWithVueAndGo/backend/work/bin/python
+#!/Users/kimmyeongsu/Desktop/WorkReportWithVueAndGo/backend/work/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys
